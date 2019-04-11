@@ -1,0 +1,136 @@
+.WeatherCards {
+    display: inline-block;
+    text-align: center;
+    vertical-align: bottom;
+    width: 100%;
+}
+
+/* h1 {
+    font-size: 280%;
+    color: bisque;
+} */
+
+.Both {
+    position: relative;
+    bottom: 1px;
+    opacity: 0.9;
+    width: 45px;
+    height: 45px;
+    position: relative;
+    z-index: 2;
+}
+
+.US {
+    right: 8px;
+}
+
+.Globe {
+    left: 8px;
+}
+
+button {
+    width: 80px;
+    height: 35px;
+    position: relative;
+    left: 20px;
+    top: 7px;
+    background: #4dac65;
+    background-image: linear-gradient(to bottom, #4dac65, #0c68a1);
+    border-radius: 28px;
+    border: 0px;
+    color: #fafafa;
+    padding: 5px;
+    text-decoration: none;
+}
+
+button:hover {
+    background-image: linear-gradient(to bottom,#0c68a1,#4dac65);
+    text-decoration: none;
+}
+
+.USA {
+    background: #e06060;
+    background-image: linear-gradient(to bottom, #e06060, #0c68a1);
+}
+
+.USA:hover {
+    background: #0c68a1;
+    background-image: linear-gradient(to bottom, #0c68a1, #e06060);
+}
+
+.ModalPrompt {
+    position: relative;
+    margin-left: 20px;
+    float: left;
+    left: 120px;
+    background: #4dac65;
+}
+
+.ModalPrompt:hover {
+    background: #2e663c;
+}
+
+.Deny {
+background: #e06060;
+}
+
+.Deny:hover {
+    background: #883939;
+}
+
+span {
+    text-decoration: underline;
+}
+
+.FAB {
+    animation: pulse 1.5s infinite;
+    box-shadow: 0 0 0 0 rgba(#5a99d4, .5);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+    }
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
+    }
+    100% {
+      transform: scale(0.9);
+      box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+    }
+  }
+
+  .Search {
+    border: 0px;
+    border-bottom: 1px solid #f48fb1;
+    box-shadow: 0 1px 0 0 #f48fb1;
+    background-clip: inherit;
+  }
+
+input[type=text] {
+    box-sizing: border-box;
+    border: 2px solid rgba(110, 110, 110, 0.493);
+    border-radius: 4px;
+    font-size: 18px;
+    width: 27%;
+    background-color: rgba(134, 131, 123, 0.774);
+    background-position: left;
+    background-size: 5%;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 45px;
+    color: #4b4945;
+    font-weight: bold;
+    transition: width ease-in-out 0.7s;
+    display: inline-block;
+}
+
+input[type=text]:focus {
+    width: 65%;
+}
+
+::-webkit-input-placeholder {
+    font-weight: normal;
+    font-size: 12px;
+    color: #535352bb;
+}

@@ -1,0 +1,12 @@
+.NavBar {
+    background-color:rgba(22, 21, 21, 0);
+    border-radius: 20px;
+    position: relative;
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-top: -105px;
+    padding: 5px;
+}

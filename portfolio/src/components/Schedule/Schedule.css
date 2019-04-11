@@ -1,0 +1,100 @@
+.Schedule {
+    box-shadow: inset 0 0 20px #00000062;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+
+.Left {
+    position: relative;
+    margin-right: 30px;
+    float: left;
+    background-image: linear-gradient(to bottom, #e06060, #0c68a1);
+}
+
+.Left:hover {
+    background-image: linear-gradient(to bottom, #0c68a1, #e06060);
+}
+
+.Left:active {
+    transform: scale(0.9);
+}
+
+.Right {
+    position: relative;
+    margin-right: 40px;
+    float: right;
+    background-image: linear-gradient(to bottom, #0c68a1, #e06060);
+}
+
+.Right:hover {
+    background-image: linear-gradient(to bottom, #e06060, #0c68a1);
+}
+
+.Right:active {
+    transform: scale(0.9);
+}
+
+
+.Week {
+    margin: 0px;
+    color: black;
+    font-weight: 200;
+}
+
+.Days {
+    height: 600px;
+    overflow: scroll;
+    margin-top: 10px;
+}
+
+.Games {
+    margin: 20px auto;
+    padding: 0px;
+    width: 100%;
+    border-spacing: 3px;
+}
+
+td {
+    padding: 10px 0px;
+}
+
+.Date {
+    margin: 10px;
+}
+
+.GameInfo {
+    width: 100%;
+}
+
+.Team1 {
+    text-align: right;
+    width: 30%;
+    font-size: 18px;
+}
+.Team2 {
+    width: 30%;
+    text-align: left;
+    font-size: 18px;
+}
+
+.AT {
+    width:10%;
+    color: navy;
+    font-size: 18px;
+    font-weight: bold;
+}
+.Status {
+    width:10%;
+    color: rgb(2, 2, 58);
+    font-size: 12px;
+}
+
+.IMG {
+    position: relative;
+    bottom: 1px;
+    opacity: 0.9;
+    width: 45px;
+    height: 45px;
+    position: relative;
+    z-index: 2;
+}

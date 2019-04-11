@@ -1,0 +1,85 @@
+.Nav {
+  text-align: left;
+  justify-content: left;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  left: -14px;
+  top: -14px;
+  border: 1px solid greenyellow;
+}
+
+
+.Trends {
+  justify-content: center;
+  text-align: center;
+  vertical-align: top;
+  margin: 10px auto;
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.TweetTrends {
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  justify-content: center;
+}
+
+.Trend {
+  justify-content: center;
+  margin: 0px 5px 1px auto;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.Tweets {
+  width: 500px;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  align-content: center;
+  display: none;
+  overflow: scroll;
+  position: relative;
+  z-index: 2;
+  border-radius: 7px;
+}
+
+.Tweets::-webkit-scrollbar {
+  background: transparent;
+  display: none;
+}
+
+.Embed {
+  position: relative;
+  z-index: 1;
+  box-shadow: 2px 3px red;
+}
+
+.PopUp {
+  position: relative;
+  width: 470px;
+  height: 150px;
+  background-color: rgba(240, 248, 255, 0.397);
+  border-radius: 10px;
+  justify-content: center;
+  margin: 10px auto;
+  display: none;
+  overflow: scroll;
+  z-index: 2;
+}
+
+.Twitter {
+  position: relative;
+  bottom: 1px;
+  opacity: 0.9;
+  width: 45px;
+  height: 45px;
+  position: relative;
+  z-index: 2;
+}
+

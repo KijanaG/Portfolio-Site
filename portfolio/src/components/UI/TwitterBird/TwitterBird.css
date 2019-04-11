@@ -1,0 +1,81 @@
+.Tweet {
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(#5a99d4, .5);
+  animation: pulsate 1.9s infinite;
+  position: relative;
+  bottom: 1px;
+  opacity: 0.9;
+  width: 45px;
+  height: 45px;
+  position: relative;
+  z-index: 2;
+}
+
+.Icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-animation: pulse 1.5s infinite;
+  animation: pulse 1.9s infinite;
+}
+
+.Tweet:hover {
+  animation: none;
+}
+
+.Icon:hover {
+  animation: none;
+}
+
+.Tweet:active,
+.Tweet.active {
+  animation: size 1.0s ease;
+}
+
+@keyframes size {
+  0% {
+    transform: scale(0.7);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(.72);
+  }
+}
+
+@keyframes pulsate {
+  0% {
+    box-shadow: 0 0 0 0 #5a99d4;
+  }
+
+  70% {
+    box-shadow: 0 0 0 18px #5a99d473;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0px rgba(#5a99d400, 0);
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.7);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(.72);
+  }
+}
