@@ -1,0 +1,27 @@
+{
+    "TableName" : "NBA_Week",
+    "KeySchema": [       
+        { 
+            "AttributeName": "weekId", 
+            "KeyType": "HASH"
+        },
+        { 
+            "AttributeName": "Games", 
+            "KeyType": "RANGE" 
+        }
+    ],
+    "AttributeDefinitions": [
+        { 
+            "AttributeName": "weekId", 
+            "AttributeType": "S" 
+        },
+        {
+            "AttributeName": "Games",
+            "AttributeType": "S"
+        }
+    ],
+    "ProvisionedThroughput": {       
+        "ReadCapacityUnits": 5, 
+        "WriteCapacityUnits": 5
+    }
+}
