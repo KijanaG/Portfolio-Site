@@ -52,11 +52,17 @@ module.exports = {
         });
     },
     getWeek: async function (req, res) {
-        res.send(await NBA.getWeek());
+        // res.send(await NBA.getWeek());
+        res.send("Manual");
     },
     uploadWeek: async function (req, res) {
         var { week, data } = await NBA.callStats(req.query.week);
         putItemAWS(week, data, res);
+    },
+    playoffs: async function (req, res) {
+        var {week, data} = await NBA.playoffStats();
+
+        updateItemAWS(week, data, res);
     },
     getGames: async function (req, res) {
         const weekId = req.query.week;
@@ -186,7 +192,7 @@ const updateItemAWS = async (week, data, res) => {
         Key: {
             weekId: week
         },
-        UpdateExpression: "set M = :m",
+        UpdateExpression: "set P = :m",
         ExpressionAttributeValues: {
             ":m": data
         },
@@ -230,7 +236,7 @@ const putItemAWS = async (week, data, res) => {
         }
     };
     if(Object.entries(data).length === 0) {
-        res.send({success: false, message: "Obj not laoded"});
+        res.send({success: false, message: "Obj not loaded"});
         return;
     }
     docClient.put(params, (err, data) => {

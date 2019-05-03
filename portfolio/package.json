@@ -53,6 +53,7 @@
     "react-coverflow": "^0.2.19",
     "react-dev-utils": "^7.0.1",
     "react-dom": "^16.7.0",
+    "react-lazyload": "^2.5.0",
     "react-map-gl": "^4.0.7",
     "react-mapbox-gl": "^4.1.0",
     "react-redux": "^6.0.0",
@@ -77,7 +78,7 @@
     "start:dev": "node server",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "deploy":"aws s3 sync build/ s3://kjgarrett.com"
+    "deploy": "aws s3 sync build/ s3://kjgarrett"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -143,5 +144,6 @@
     "style-loader": "^0.23.0",
     "url-loader": "^1.1.1",
     "webpack": "^4.19.1"
-  }
+  },
+  "homepage": "https://kjgarrett.com"
 }

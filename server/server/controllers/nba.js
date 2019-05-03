@@ -2,14 +2,15 @@ const $ = require('cheerio');
 const pptr = require('puppeteer');
 const nbaURL = "https://stats.nba.com";
 const schedURL = "/schedule/#!?PD=N&Week=";
+const playoffURL = "/schedule/#!?Month=7&PD=N";
 const weekURL = "/schedule/#!?PD=N&Week=";
 const bbrefURL = "https://www.basketball-reference.com/leagues/NBA_2019.html";
 
-const getStats = async (i, url) => {
+const getStats = async (url) => {
     var schedule;
     const browser = await pptr.launch({args: ['--no-sandbox']});
     const page = await browser.newPage();
-    await page.goto(nbaURL + url + i);
+    await page.goto(nbaURL + url);
     await page.waitForSelector('div.stats-schedule-page', { timeout: 1800 });
     const body = await page.evaluate(() => {
         return document.querySelector('div.stats-schedule-page div.stats-schedule-page').innerHTML;
@@ -18,19 +19,27 @@ const getStats = async (i, url) => {
         const date = $('header h1.schedule-content__date a', data).text();
         const games = $('div.schedule-game__content', data).map((i, game) => {
             const status = $("div.schedule-game__status div span[ng-if='::game.stt != 'PPD'']", game).html();
+            const season = $("div.schedule-game__status div span.schedule-game__season", game).html();
             const match = $('tr', game).map((i, info) => {
-                let team = $('th', info).text().trim();
-                let score = $('td', info).text().trim();
+                let team = $('th.schedule-game__team-name', info).text().trim();
+                let score = $('td.schedule-game__team-score', info).text().trim();
                 if (score.length === 0)
                     score = null;
-                return { team: team, score: score }
+                if(season === "Playoffs")
+                    return { team: team, score: score }
+                else
+                    return null;
             }).get();
-            return { 'status': status, 'home': match['0'], 'away': match['1'] }
+            if(match.length > 0) {
+                return { 'status': status, 'home': match['0'], 'away': match['1'] }
+            }
         }).get();
-        return { 'date': date, 'games': games };
+        if(games.length > 0) {
+            return { 'date': date, 'games': games };
+        }
     }).get();
     await browser.close();
-    return { "week": i, "data": schedule };
+    return { "week": "Playoffs", "data": schedule };
 }
 
 module.exports = {
@@ -67,6 +76,16 @@ module.exports = {
             console.log(e);
             return null;
         }
+    },
+    playoffStats: async () => {
+        var objData;
+        try {
+            objData = await getStats("/schedule/#!?Month=8&PD=N");
+            console.log("Success");
+        } catch (e) {
+            objData = await getStats("/schedule/#!?Month=8&PD=N");
+        }
+        return objData;
     },
     callStats: async (i) => {
         var objData;

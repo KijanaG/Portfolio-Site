@@ -13,7 +13,8 @@
 
 h1 {
     font-size: 280%;
-    color: bisque;
+    color: rgb(252, 225, 193);
+    -webkit-text-fill-color: rgb(252, 225, 193);
 }
 
 .Apps {

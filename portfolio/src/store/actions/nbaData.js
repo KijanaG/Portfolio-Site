@@ -13,8 +13,8 @@ export const getNBAWeek = () => {
     return async dispatch => {
         await axios.get(URL.prod+"/api/NBA/week")
             .then(res => {
-                updateWeek(res.data);
-                dispatch(setWeekData(res.data));
+                updateWeek();
+                dispatch(setWeekData(27));
             })
             .catch(err => {
                 console.log(err);
@@ -31,12 +31,13 @@ export const setWeek = (week) => {
 
 const updateWeek = (week) => {
     axios({
-        url: '/api/NBA/update',
-        method: 'POST',
+        url: '/api/NBA/playoffs',
+        method: 'GET',
         baseURL: URL.prod,
-        params: {
-            week: week
-        }
+        // params: {
+        //     week: week
+        // }
     }).then()
         .catch(err => console.log(err));
 }
+

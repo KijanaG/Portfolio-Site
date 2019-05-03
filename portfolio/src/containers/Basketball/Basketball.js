@@ -5,8 +5,7 @@ import classes from './Basketball.css';
 import * as actions from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import NBASchedule from '../../components/Schedule/Schedule';
-import { Table } from 'react-bootstrap';
-import $ from '../../assets/nba/nba.json'
+import NBAStats from '../../components/Stats/Stats';
 import URL from '../../assets/APIKeys/WeatherAPI.json';
 
 class Basketball extends PureComponent {
@@ -18,7 +17,8 @@ class Basketball extends PureComponent {
     }
 
     getWeek = (week) => {
-        if (week < 1 || week > 26) return;
+        if (week < 1 || week > 27) return;
+        if(week === 27) week = "Playoffs";
         axios({
             url: '/api/NBA/games',
             method: 'GET',
@@ -26,7 +26,8 @@ class Basketball extends PureComponent {
             params: { week: week }
         }).then(res => {
             let $ = res.data.weeks[0];
-            this.setState({ week: $.weekId, games: $.M });
+            let games = $.M.concat($.P);
+            this.setState({ week: ($.weekId === "Playoffs" ? 27 : $.weekId), games: games });
         })
         this.props.setWeek(week)
     }
@@ -65,9 +66,7 @@ class Basketball extends PureComponent {
     componentWillMount() {
         this.getStats(null, 18);
         this.getWeek(this.props.week);
-        if(this.props.backgroundImage !== "bball") {
-            this.props.changePhoto("bball");
-        }
+        this.props.changePhoto("bball");
     }
 
     render() {
@@ -76,29 +75,7 @@ class Basketball extends PureComponent {
             schedule = <NBASchedule week={Number(this.state.week)} games={this.state.games} getWeek={this.getWeek} />;
         var stats = null;
         if (this.state.stats) {
-            //stats = <NBAStats stats={this.state.stats} orderBy={this.state.orderBy} getStats={this.getStats} />;
-            stats = (
-                <Table bordered hover responsive>
-                    <thead>
-                        <tr>
-                            {$.Headers.map((title, i) => {
-                                return <td onClick={() => this.getStats(title, i)} style={{ fontWeight: "bold", cursor: title !== "Team" && title !== "Games" ? "pointer" : null }} key={i}>{title}</td>
-                            })}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.stats.map(($, j) => {
-                            return (
-                                <tr key={j}>
-                                    {$.L.map((stat, i) => {
-                                        return <td style={{ fontWeight: this.state.orderBy === i || j === 30 || i === 0 ? "bold" : null }} key={i}>{stat[Object.keys(stat)[0]]}</td>
-                                    })}
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </Table>
-            )
+            stats = <NBAStats stats={this.state.stats} orderBy={this.state.orderBy} getStats={this.getStats} />;
         }
         return (
             <div className={classes.BBall}>

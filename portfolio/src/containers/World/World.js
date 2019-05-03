@@ -19,12 +19,10 @@ class World extends Component {
     }
 
     componentWillMount() {
+        this.props.changePhoto("montana.jpg")
         if(this.props.weatherData.length === 0) {
             for (var city of this.state.cities)
                 this.props.onInitializeData(city);
-        }
-        if(this.props.backgroundImage !== "montana.jpg") {
-            this.props.changePhoto("montana.jpg")
         }
     }
 

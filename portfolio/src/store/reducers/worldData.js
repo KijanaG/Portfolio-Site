@@ -12,7 +12,7 @@ const initialState = {
     anyTime: null,
     anyGMT: false,
     anyError: false,
-    backgroundImage: "code.png"
+    backgroundImage: "null"
 };
 
 

@@ -56,4 +56,11 @@ module.exports = (app) => {
         res.setHeader('Access-Control-Allow-Credentials', true);
         api.getTeamStats(req, res);
     })
+    app.get('/api/NBA/playoffs', (req, res) => {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+        res.setHeader('Access-Control-Allow-Credentials', true);
+        api.playoffs(req, res);
+    })
 }

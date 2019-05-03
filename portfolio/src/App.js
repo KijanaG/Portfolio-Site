@@ -8,15 +8,15 @@ import { getNBAWeek, changePhoto } from './store/actions/index';
 import DUNK from './assets/img/dunk.mov';
 
 import Bio from './containers/Bio/Bio';
-import World from './containers/World/World';
+// import World from './containers/World/World';
 
 const asyncBasketball = asyncComponent(() => {
   return import('./containers/Basketball/Basketball');
 })
 
-// const asyncWorld = asyncComponent(() => {
-//   return import('./containers/World/World');
-// })
+const asyncWorld = asyncComponent(() => {
+  return import('./containers/World/World');
+})
 
 // const asyncGames = asyncComponent(() => {
 //   return import('./containers/Games/Games');
@@ -51,7 +51,7 @@ class App extends Component {
 
   render() {
     let style = {textAlign: "center"};
-    if (this.props.backgroundImage !== "bball") {
+    if (this.props.backgroundImage !== "bball" && this.props.backgroundImage !== "null") {
       style = {
         backgroundImage: 'url(' + require('./assets/img/' + this.props.backgroundImage) + ')',
         opacity: '0.89'
@@ -60,11 +60,11 @@ class App extends Component {
 
     let routes = (
       <Switch>
-        <Route path="/bball" component={asyncBasketball} />
-        <Route path="/globe" component={World} />
+        <Route path={`${process.env.PUBLIC_URL}/bball`} component={asyncBasketball} />
+        <Route path={`${process.env.PUBLIC_URL}/globe`} component={asyncWorld} />
         {/* <Route path="/games" component={asyncGames} /> */}
-        <Route path="/" exact component={Bio} />
-        <Redirect to="/" />
+        <Route path={`${process.env.PUBLIC_URL}/`} exact component={Bio} />
+        <Redirect to={`${process.env.PUBLIC_URL}/`} />
       </Switch>
     );
     return (

@@ -47,7 +47,7 @@ export const anyLocationDataFailed = () => {
 
 export const getAnyLocationData = (cityName) => {
     return dispatch => {
-        axios.get("http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey['weather'])
+        axios.get("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey['weather'])
             .then(res => {
                 let lat = res.data.coord.lat;
                 let lng = res.data.coord.lon;
@@ -82,7 +82,7 @@ export const getLocationData = () => {
             .then(res => {
                 let lat = res.data.location.lat;
                 let lng = res.data.location.lng;
-                axios.get("http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&appid=" + APIKey['weather'])
+                axios.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&appid=" + APIKey['weather'])
                     .then(res => {
                         let obj = {};
                         obj[res.data.name] = res.data;
@@ -116,7 +116,7 @@ export const getLocationData = () => {
 
 export const fetchWeatherData = (cityName) => {
     return (dispatch) => {
-        axios.get("http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey['weather'])
+        axios.get("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey['weather'])
             .then(res => {
                 // console.log(res);
                 let obj = {};

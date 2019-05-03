@@ -9,7 +9,6 @@
     padding: 1%;
     border-style: double;
     box-shadow: 2px 2px rgba(42, 40, 61, 0.445);
-    cursor: pointer;
 }
 
 .DayTimeOverCast {
@@ -86,6 +85,7 @@ span {
     text-align: center;
     transition: transform 0.9s;
     transform-style: preserve-3d;
+    backface-visibility: hidden;
 }
 .StaticWeatherCard {
     position: relative;
@@ -95,6 +95,7 @@ span {
 }
 .WeatherCard:hover .FlipWeatherCard {
     transform: rotateY(180deg);
+    backface-visibility: hidden;
 }
 
 .WeatherCardFront, .WeatherCardBack {
@@ -112,6 +113,7 @@ span {
     padding: 25% 5%;
     transform: rotateY(180deg);
     z-index: 1;
+    backface-visibility: hidden;
 }
 
 .drop {
